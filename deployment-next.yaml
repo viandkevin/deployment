@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-app
+  namespace: space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: next-app
+  template:
+    metadata:
+      labels:
+        app: next-app
+    spec:
+      containers:
+        - name: next-app
+          image: pro24/next-app:v2
+          ports:
+            - containerPort: 3000
+          env:
+            - name: SPACE_SERVICE_HOST
+              value: "http://space-service:8080"
+            - name: SPACE_SERVICE_ENDPOINT
+              value: "/api/hello"
+          resources:
+            limits:
+              memory: "500Mi"
+            requests:
+              memory: "400Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: next-app-service
+  namespace: space
+spec:
+  type: ClusterIP
+  selector:
+    app: next-app
+  ports:
+    - port: 3000
+      targetPort: 3000

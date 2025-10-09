@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: space-app
+  namespace: space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: space-app
+  template:
+    metadata:
+      labels:
+        app: space-app
+    spec:
+      containers:
+      - name: space-app
+        image: pro24/space:v7
+        ports:
+        - containerPort: 8080
+        env:
+            - name: VERSION
+              value: "v7"
+        resources:
+          limits:
+            memory: "500Mi"
+          requests:
+            memory: "400Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: space-service
+  namespace: space
+spec:
+  type: ClusterIP
+  selector:
+    app: space-app
+  ports:
+    - port: 8080
+      targetPort: 8080
