@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: next-app
-        image: pro24/next-app:v2
+        image: pro24/next-app:v3
         ports:
         - containerPort: 3000
         env:
@@ -25,3 +25,7 @@ spec:
           value: "http://space-service:8080"
         - name: SPACE_SERVICE_ENDPOINT
           value: "/api/hello"
+        - name: VERSION
+          value: "v3"
+        - name: BACKEND_VERSION
+          value: "v7"

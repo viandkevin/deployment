@@ -25,7 +25,7 @@ spec:
     - destination:
         host: space-service
         subset: v6
-  - name: "space-default"
+  - name: "default-fallback"
     route:
     - destination:
         host: space-service
