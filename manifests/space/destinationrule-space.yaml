@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: space-destrule
+  namespace: space
+spec:
+  host: space-service
+  subsets:
+  - name: v6
+    labels:
+      version: v6
+  - name: v7
+    labels:
+      version: v7

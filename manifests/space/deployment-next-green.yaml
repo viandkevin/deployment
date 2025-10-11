@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-app-green
+  namespace: space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: next-app
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: next-app
+        version: v2
+    spec:
+      containers:
+      - name: next-app
+        image: pro24/next-app:v2
+        ports:
+        - containerPort: 3000
+        env:
+        - name: SPACE_SERVICE_HOST
+          value: "http://space-service:8080"
+        - name: SPACE_SERVICE_ENDPOINT
+          value: "/api/hello"

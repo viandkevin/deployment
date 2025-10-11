@@ -1,0 +1,51 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: next-app-virtualservice
+  namespace: space
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-system/istio-ingressgateway
+  http:
+  - name: "staging-green"
+    match:
+    - uri:
+        prefix: "/staging"
+    rewrite:
+      uri: "/"
+    headers:
+      request:
+        add:
+          version: "v2"
+          x-backend-version: "v7"
+    route:
+    - destination:
+        host: next-app-service
+        subset: v2
+      weight: 100
+  - name: "header-green"
+    match:
+    - headers:
+        version:
+          exact: "v2"
+    headers:
+      request:
+        add:
+          x-backend-version: "v7"
+    route:
+    - destination:
+        host: next-app-service
+        subset: v2
+      weight: 100
+  - name: "default-blue"
+    headers:
+      request:
+        add:
+          x-backend-version: "v6"
+    route:
+    - destination:
+        host: next-app-service
+        subset: v1
+      weight: 100

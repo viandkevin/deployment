@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: space-service-virtualservice
+  namespace: space
+spec:
+  hosts:
+  - space-service
+  http:
+  - name: "space-v7"
+    match:
+    - headers:
+        x-backend-version:
+          exact: v7
+    route:
+    - destination:
+        host: space-service
+        subset: v7
+  - name: "space-v6"
+    match:
+    - headers:
+        x-backend-version:
+          exact: v6
+    route:
+    - destination:
+        host: space-service
+        subset: v6
+  - name: "space-default"
+    route:
+    - destination:
+        host: space-service
+        subset: v6
