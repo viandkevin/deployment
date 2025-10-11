@@ -1,17 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: space-app
+  name: space-app-blue
   namespace: space
+  labels:
+    app: space-app
+    version: v6
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: space-app
+      version: v6
   template:
     metadata:
       labels:
         app: space-app
+        version: v6
     spec:
       containers:
       - name: space-app
@@ -19,8 +24,8 @@ spec:
         ports:
         - containerPort: 8080
         env:
-            - name: VERSION
-              value: "GREEN"
+        - name: VERSION
+          value: "BLUE"
         resources:
           limits:
             memory: "500Mi"
@@ -37,5 +42,5 @@ spec:
   selector:
     app: space-app
   ports:
-    - port: 8080
-      targetPort: 8080
+  - port: 8080
+    targetPort: 8080

@@ -12,7 +12,9 @@ spec:
   - name: "staging-green"
     match:
     - uri:
-        prefix: "/staging"
+        prefix: "/staging/"
+    - uri:
+        exact: "/staging"
     rewrite:
       uri: "/"
     headers:
