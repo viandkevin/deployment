@@ -33,7 +33,7 @@ spec:
               value: "v7"
           resources:
             limits:
-              memory: "500Mi"
+              memory: "501Mi"
             requests:
               memory: "400Mi"
 ---
