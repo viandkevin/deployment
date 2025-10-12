@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: next-app
   namespace: space
-  annotations:
-    sidecar.istio.io/inject: "false"
 spec:
   replicas: 1
   selector:
@@ -13,6 +11,8 @@ spec:
       version: v1
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
       labels:
         app: next-app
         version: v1
@@ -42,8 +42,6 @@ kind: Service
 metadata:
   name: next-app
   namespace: space
-  annotations:
-    sidecar.istio.io/inject: "false"
 spec:
   type: ClusterIP
   selector:
