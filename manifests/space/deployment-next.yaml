@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: next-app
-          image: pro24/next-app:v4
+          image: pro24/next-app:v5
           ports:
             - containerPort: 3000
           env:
