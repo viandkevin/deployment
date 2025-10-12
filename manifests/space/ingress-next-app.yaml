@@ -14,7 +14,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /staging/*
+          - path: /staging
             pathType: Prefix
             backend:
               service:
