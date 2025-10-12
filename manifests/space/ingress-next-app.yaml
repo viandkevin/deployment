@@ -25,6 +25,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: next-app-blue
+                name: next-app
                 port:
                   number: 3000
