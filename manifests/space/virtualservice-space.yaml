@@ -5,28 +5,31 @@ metadata:
   namespace: space
 spec:
   hosts:
-  - space-service
+    - space-service
   http:
-  - name: "space-v7"
-    match:
-    - headers:
-        x-backend-version:
-          exact: v7
-    route:
-    - destination:
-        host: space-service
-        subset: v7
-  - name: "space-v6"
-    match:
-    - headers:
-        x-backend-version:
-          exact: v6
-    route:
-    - destination:
-        host: space-service
-        subset: v6
-  - name: "default-fallback"
-    route:
-    - destination:
-        host: space-service
-        subset: v6
+    - name: "space-v7"
+      match:
+        - headers:
+            x-backend-version:
+              exact: v7
+      route:
+        - destination:
+            host: space-service
+            subset: v7
+          weight: 100
+    - name: "space-v6"
+      match:
+        - headers:
+            x-backend-version:
+              exact: v6
+      route:
+        - destination:
+            host: space-service
+            subset: v6
+          weight: 100
+    - name: "default-fallback"
+      route:
+        - destination:
+            host: space-service
+            subset: v6
+          weight: 100
