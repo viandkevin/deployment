@@ -24,8 +24,8 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: VERSION
-          value: "BLUE"
+          - name: VERSION
+            value: "BLUE"
         resources:
           limits:
             memory: "500Mi"
@@ -38,7 +38,6 @@ metadata:
   name: space-service
   namespace: space
 spec:
-  type: ClusterIP
   selector:
     app: space-app
   ports:

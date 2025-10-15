@@ -7,7 +7,7 @@ spec:
   hosts:
     - space-service
   http:
-    - name: "space-v7"
+    - name: "route-to-v7"
       match:
         - headers:
             x-backend-version:
@@ -17,7 +17,7 @@ spec:
             host: space-service
             subset: v7
           weight: 100
-    - name: "space-v6"
+    - name: "route-to-v6"
       match:
         - headers:
             x-backend-version:
