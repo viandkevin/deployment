@@ -30,7 +30,7 @@ spec:
             - name: VERSION
               value: "v2"
             - name: BACKEND_VERSION
-              value: "v5"
+              value: "v6"
           resources:
             limits:
               memory: "500Mi"
