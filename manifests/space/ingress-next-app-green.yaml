@@ -13,6 +13,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: next-app
     alb.ingress.kubernetes.io/group.order: '1'
 spec:
+  ingressClassName: alb
   rules:
     - host: staging.nicetohavespace.uk
       http:
