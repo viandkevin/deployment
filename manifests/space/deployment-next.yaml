@@ -25,6 +25,10 @@ spec:
               value: "http://space-service:8080"
             - name: SPACE_SERVICE_ENDPOINT
               value: "/api/hello"
+            - name: VERSION
+              value: ""
+            - name: BACKEND_VERSION
+              value: ""
           resources:
             limits:
               memory: "500Mi"
