@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kong-config
+  namespace: space
+data:
+  kong.yml: |
+    _format_version: "2.1"
+    services:
+      - name: example-service
+        url: http://httpbin.org
+        routes:
+          - name: example-route
+            paths:
+              - /
