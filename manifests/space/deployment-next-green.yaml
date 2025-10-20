@@ -22,7 +22,7 @@ spec:
             - containerPort: 3000
           env:
             - name: SPACE_SERVICE_HOST
-              value: "http://space-service:8080"
+              value: "https://api.nicetohavespace.uk"
             - name: SPACE_SERVICE_ENDPOINT
               value: "/api/hello"
             - name: VERSION
