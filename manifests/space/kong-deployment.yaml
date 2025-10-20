@@ -27,7 +27,15 @@ spec:
           containerPort: 8444
         env:
         - name: KONG_DATABASE
-          value: "off"
+          value: "postgres"
+        - name: KONG_PG_HOST
+          value: "postgres"
+        - name: KONG_PG_DATABASE
+          value: "kong"
+        - name: KONG_PG_USER
+          value: "postgres"
+        - name: KONG_PG_PASSWORD
+          value: "Password09"
         - name: KONG_DECLARATIVE_CONFIG
           value: "/kong/declarative/kong.yml"
         - name: KONG_PROXY_ACCESS_LOG
